@@ -1,10 +1,10 @@
-const quickSort = (array: number[]): number[] => {
+const quickSort = <T>(array: T[]): T[] => {
     if (array.length < 2) {
         return array;
     } else {
         const [pivot] = array;
-        const less = array.filter((item) => item < pivot);
-        const greater = array.filter((item) => item > pivot);
+        const less = array.slice(1).filter((item) => item <= pivot);
+        const greater = array.slice(1).filter((item) => item > pivot);
         return [...quickSort(less), pivot, ...quickSort(greater)];
     }
 };
